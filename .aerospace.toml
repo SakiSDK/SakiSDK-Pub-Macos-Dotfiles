@@ -131,6 +131,11 @@ gaps.outer.right =      0
     # 移到下一台显示器（例如 alt-shift-tab）1
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
+    # 快捷键打开Setting
+    ctrl-i = 'exec-and-forget open "/System/Applications/System Settings.app"'
+    # 按下 Ctrl + Esc 关闭当前焦点窗口
+    ctrl-esc = 'close'
+
 
 # `service` 绑定模式定义
 [mode.service.binding]
