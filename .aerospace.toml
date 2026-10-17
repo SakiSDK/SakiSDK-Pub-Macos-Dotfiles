@@ -1,0 +1,182 @@
+# 把这份配置复制到 ~/.aerospace.toml
+# 之后你就可以按自己的习惯编辑 ~/.aerospace.toml
+
+# 配置版本，用于兼容性和废弃项处理
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+# 默认值（如果省略该字段）：config-version = 1
+config-version = 2
+
+# 这里可以添加 AeroSpace 启动后执行的命令
+# 可用命令见：https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# 登录时自动启动 AeroSpace
+start-at-login = true
+
+# 保存配置文件时自动重新加载
+# 设为 true 后，需要先手动 reload 一次，自动重载才会开始生效
+auto-reload-config = false
+
+# 规范化设置。见：https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# `accordion-padding` 用来设置手风琴布局的内边距大小
+# 设为 0 可关闭该留白效果
+accordion-padding = 30
+
+# 可选值：tiles | accordion
+default-root-container-layout = 'tiles'
+
+# 可选值：horizontal | vertical | auto
+# `auto` 表示：宽屏显示器（宽大于高）使用 horizontal，
+#              竖屏显示器（高大于宽）使用 vertical
+default-root-container-orientation = 'auto'
+
+# 当焦点切换到其他显示器时，鼠标也跟着移动到该显示器
+# 如果你不喜欢这个行为，可以把这项配置删掉
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# 默认值（如果省略该字段）：on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# 通过这个开关，基本可以禁用 macOS 的“隐藏应用”（cmd-h）行为
+# 如果你平时不用这个功能，但经常误按 cmd-h 或 cmd-alt-h，这项会很有用
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
+
+# 这些工作区即使没有窗口、即使当前不可见，也会一直保留
+# 这个配置项仅在 `config-version = 2` 时可用
+# 默认值（如果省略该字段）：persistent-workspaces = []
+persistent-workspaces = ["main","code", "web", "chat", "music", "other", "video"]
+
+
+# 每次绑定模式切换时都会触发一次这个回调
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+on-mode-changed = []
+
+focus-follows-mouse.enabled = false
+
+# 可选值：qwerty | dvorak | colemak
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+key-mapping.preset = 'qwerty'
+
+# 窗口之间的间距（inner-*）以及窗口到显示器边缘的间距（outer-*）
+# 可配置方式：
+# - 固定值：     gaps.outer.top = 8Œ
+# - 按显示器：   gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                在这个例子里，24 表示没有匹配到显示器规则时使用的默认值
+#                显示器匹配模式与 `workspace-to-monitor-force-assignment` 相同
+#                见：
+#                https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+gaps.inner.horizontal = 0
+gaps.inner.vertical =   0
+gaps.outer.left =       0
+gaps.outer.bottom =     0
+gaps.outer.top =        0
+gaps.outer.right =      0
+
+# `main` 绑定模式定义
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# `main` 绑定模式必须始终存在
+# 默认值（如果省略该字段）：mode.main.binding = {}
+[mode.main.binding]
+    # 所有可用命令见：https://nikitabobko.github.io/AeroSpace/commands
+
+    # 切换布局
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
+
+    # 切换窗口焦点
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    # 移动窗口
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # 调整窗口大小
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # 切换工作区
+    alt-1 = 'workspace main'
+    alt-2 = 'workspace code'
+    alt-3 = 'workspace web'
+    alt-4 = 'workspace chat'
+    alt-5 = 'workspace music'
+    alt-esc = 'workspace other'
+    alt-backtick = 'workspace video'
+
+    # 移动窗口到工作区
+    alt-shift-1 = 'move-node-to-workspace main'
+    alt-shift-2 = 'move-node-to-workspace code'
+    alt-shift-3 = 'move-node-to-workspace web'
+    alt-shift-4 = 'move-node-to-workspace chat'
+    alt-shift-5 = 'move-node-to-workspace music'
+    alt-shift-esc = 'move-node-to-workspace other'
+    alt-shift-backtick = 'move-node-to-workspace video'
+
+    # 切换工作区
+    alt-tab = 'workspace-back-and-forth'
+    # 切换到服务模式
+    alt-shift-semicolon = 'mode service'
+
+    # 移到下一台显示器（例如 alt-shift-tab）1
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+
+# `service` 绑定模式定义
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # 重置布局
+    f = ['layout floating tiling', 'mode main'] # 在浮动布局和平铺布局之间切换
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # sticky 目前还不支持：https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+
+
+# 工作区分配到显示器
+[workspace-to-monitor-force-assignment]
+    chat = "secondary"
+    video = "secondary"
+    music = "secondary"
+    main = "main"
+    code = "main"
+    web = "main"
+    other = "main"
+
+
+# 监控APP自动放置到固定工作区
+# chat工作区
+[[on-window-detected]]
+    if.app-id = "com.tencent.xinWeChat"
+    run = "move-node-to-workspace chat"
+[[on-window-detected]]
+    if.app-id = "com.tencent.qq"
+    run = "move-node-to-workspace chat"
+
+# music工作区
+[[on-window-detected]]
+    if.app-id = "com.netease.163music"
+    run = "move-node-to-workspace music"
+
+# code工作区
+[[on-window-detected]]
+    if.app-id = "com.trae.app"
+    run = "move-node-to-workspace code"
+[[on-window-detected]]
+    if.app-id = "com.github.wez.wezterm"
+    run = "move-node-to-workspace code"
