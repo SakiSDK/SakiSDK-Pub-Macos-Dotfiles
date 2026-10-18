@@ -49,7 +49,7 @@ automatically-unhide-macos-hidden-apps = false
 # 这些工作区即使没有窗口、即使当前不可见，也会一直保留
 # 这个配置项仅在 `config-version = 2` 时可用
 # 默认值（如果省略该字段）：persistent-workspaces = []
-persistent-workspaces = ["main","code", "web", "chat", "music", "other", "video"]
+persistent-workspaces = ["main","code", "web", "chat", "music", "video", "download","other"]
 
 
 # 每次绑定模式切换时都会触发一次这个回调
@@ -109,8 +109,9 @@ gaps.outer.right =      0
     alt-1 = 'workspace main'
     alt-2 = 'workspace code'
     alt-3 = 'workspace web'
-    alt-4 = 'workspace chat'
+    alt-w = 'workspace chat'
     alt-5 = 'workspace music'
+    alt-d = 'workspace download'
     alt-esc = 'workspace other'
     alt-backtick = 'workspace video'
 
@@ -118,8 +119,9 @@ gaps.outer.right =      0
     alt-shift-1 = 'move-node-to-workspace main'
     alt-shift-2 = 'move-node-to-workspace code'
     alt-shift-3 = 'move-node-to-workspace web'
-    alt-shift-4 = 'move-node-to-workspace chat'
+    alt-shift-w = 'move-node-to-workspace chat'
     alt-shift-5 = 'move-node-to-workspace music'
+    alt-shift-d = 'move-node-to-workspace download'
     alt-shift-esc = 'move-node-to-workspace other'
     alt-shift-backtick = 'move-node-to-workspace video'
 
@@ -158,6 +160,7 @@ gaps.outer.right =      0
     chat = "secondary"
     video = "secondary"
     music = "secondary"
+    download = "secondary"
     main = "main"
     code = "main"
     web = "main"
