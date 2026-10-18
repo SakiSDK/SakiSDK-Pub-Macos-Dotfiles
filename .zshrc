@@ -49,6 +49,12 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 
 # =========== 指令简化指令 ===========
+# 测试终端下载速度
+alias speed="speedtest --proxy=http://127.0.0.1:7899"
+
+# neofetch快捷指令
+alias mac="neofetch"
+
 # 隐藏指定文件夹
 alias hidef='chflags hidden'
 # 取消隐藏
