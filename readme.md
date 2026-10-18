@@ -9,7 +9,7 @@
 [![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://www.apple.com/macos/)
 [![AeroSpace](https://img.shields.io/badge/AeroSpace-FF5722?style=for-the-badge&logo=windowsterminal&logoColor=white)](https://github.com/nikitabobko/AeroSpace)
 [![skhd](https://img.shields.io/badge/skhd-111111?style=for-the-badge&logo=keyboard&logoColor=white)](https://github.com/koekeishiya/skhd)
-[![WezTerm](https://img.shields.io/badge/WezTerm-4EAA25?style=for-the-badge&logo=gnometerminal&logoColor=white)](https://wezfurlong.org/wezterm/)
+[![WezTerm](https://img.shields.io/badge/WezTerm-4EAA25?style=for-the-badge&logo=wezterm&logoColor=white)](https://wezfurlong.org/wezterm/)
 
 </div>
 
