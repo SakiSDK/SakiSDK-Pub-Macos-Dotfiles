@@ -10,6 +10,7 @@
 [![AeroSpace](https://img.shields.io/badge/AeroSpace-FF5722?style=for-the-badge&logo=windowsterminal&logoColor=white)](https://github.com/nikitabobko/AeroSpace)
 [![skhd](https://img.shields.io/badge/skhd-111111?style=for-the-badge&logo=keyboard&logoColor=white)](https://github.com/koekeishiya/skhd)
 [![WezTerm](https://img.shields.io/badge/WezTerm-4EAA25?style=for-the-badge&logo=wezterm&logoColor=white)](https://wezfurlong.org/wezterm/)
+[![Starship](https://img.shields.io/badge/Starship-DD0B78?style=for-the-badge&logo=starship&logoColor=white)](https://starship.rs/)
 
 </div>
 
@@ -24,6 +25,7 @@
 - 🚀 **`AeroSpace`**：负责平铺布局、工作区切换、窗口移动与自动归类。
 - ⌨️ **`skhd`**：补充系统级快捷键，做轻量级热键守护。
 - 💻 **`WezTerm`**：使用模块化 Lua 配置组织终端外观、字体、启动项和交互行为。
+- ⭐ **`Starship`**：负责统一终端提示符样式，展示目录、Git、语言运行时与时间信息。
 - 🍎 **`Zsh`**：整合 Homebrew、代理、别名、开发工具链和命令行增强组件。
 
 ---
@@ -36,6 +38,7 @@
 | **Zsh** | [`.zshrc`](./.zshrc) | `~/.zshrc` | Shell 环境变量、别名、函数与插件初始化 |
 | **skhd** | [`skhdrc`](./skhdrc) | `~/.config/skhd/skhdrc` | 快捷键守护进程配置 |
 | **WezTerm** | [`wezterm/`](./wezterm) | `~/.config/wezterm/` | 模块化终端配置目录 |
+| **Starship** | [`starship.toml`](./starship.toml) | `~/.config/starship.toml` | 命令行提示符主题配置 |
 | **预览图** | [`preview/`](./preview) | *无* | 配置效果截图 |
 
 ---
@@ -67,6 +70,15 @@
 </details>
 
 <details>
+<summary><b>⭐ Starship (命令行提示符)</b></summary>
+
+- 使用 `gruvbox_dark` 调色板统一终端视觉风格
+- 提示符会展示操作系统、用户名、当前目录、Git 分支与状态
+- 自动展示常见语言运行时信息，如 `Node.js`、`Python`、`Rust`、`Java`
+- 集成 `Docker`、`Conda`、`Pixi` 与时间模块，信息密度高但层次清晰
+</details>
+
+<details>
 <summary><b>🍎 Zsh (Shell 环境)</b></summary>
 
 - 内置常用开发别名，如 `gpush`、`gpull`、`nv`、`hf`
@@ -89,6 +101,7 @@ git clone https://github.com/SakiSDK/SakiSDK-Pub-Macos-Dotfiles.git ~/dotfiles
 ```bash
 mkdir -p ~/.config/skhd
 mkdir -p ~/.config/wezterm
+mkdir -p ~/.config
 ```
 
 ### 3. 部署配置
@@ -103,6 +116,7 @@ ln -sf ~/dotfiles/.aerospace.toml ~/.aerospace.toml
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/skhdrc ~/.config/skhd/skhdrc
 ln -sfn ~/dotfiles/wezterm ~/.config/wezterm
+ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
 ```
 </details>
 
@@ -114,6 +128,7 @@ cp ~/dotfiles/.aerospace.toml ~/.aerospace.toml
 cp ~/dotfiles/.zshrc ~/.zshrc
 cp ~/dotfiles/skhdrc ~/.config/skhd/skhdrc
 cp -R ~/dotfiles/wezterm ~/.config/wezterm
+cp ~/dotfiles/starship.toml ~/.config/starship.toml
 ```
 </details>
 
@@ -126,7 +141,7 @@ cp -R ~/dotfiles/wezterm ~/.config/wezterm
 | 工具 | 重载命令 | 备注 |
 | :--- | :--- | :--- |
 | **AeroSpace** | `aerospace reload-config` | 即时生效 |
-| **Zsh** | `source ~/.zshrc` | 即时生效 |
+| **Zsh / Starship** | `source ~/.zshrc` | Zsh 与提示符配置会一起生效 |
 | **skhd** | `skhd --reload` | 如果未启动，先用 `-c` 指定路径启动 |
 | **WezTerm** | *自动感知* | 若无反应，直接重启应用 |
 
