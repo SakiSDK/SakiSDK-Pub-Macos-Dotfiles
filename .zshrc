@@ -101,13 +101,6 @@ alias meili-health='curl http://127.0.0.1:7700/health'
 
 
 # =========== 相关函数指令 ===========
-# yabai相关
-function yabaiwindow() {
-  yabai -m query --windows | jq '.[] | {app, title}'
-}
-function yabairestart() {
-  yabai --restart-service
-}
 # fzf相关函数
 function fcode() {
   local base_dir="${1:-.}"
