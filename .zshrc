@@ -1,8 +1,22 @@
+# =========== 环境变量 ===========
 # homebrew 地址
 export PATH="/opt/homebrew/bin:$PATH"
-
 # 永久设置当前环境
 export ENV=dev
+# Added by CodeBuddy CN
+export PATH="/Users/sakisdk/.codebuddy/bin:$PATH"
+# Android SDK环境变量
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/emulatorexport ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+export JAVA_HOME=/usr/local/opt/openjdk@8
+# JAVA 环境变量
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="$JAVA_HOME/bin:$PATH"
+
 
 # =========== 代理地址 ===========
 export http_proxy="http://127.0.0.1:7899"
@@ -126,13 +140,14 @@ ftrae() {
   file=$(fd . "$base_dir" --type f | fzf) || return
   trae "$file"
 }
-# 开启代理
+
+# 终端开启代理
 function proxy-on() {
   export http_proxy="http://127.0.0.1:7899"
   export https_proxy="http://127.0.0.1:7899"
   # export all_proxy="socks5://127.0.0.1:7890"
 }
-# 关闭代理
+# 终端关闭代理
 function proxy-off() {
   unset http_proxy
   unset https_proxy
@@ -164,20 +179,3 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Activate autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
-# Added by CodeBuddy CN
-export PATH="/Users/sakisdk/.codebuddy/bin:$PATH"
-
-# Android SDK环境变量
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/emulatorexport ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
-export JAVA_HOME=/usr/local/opt/openjdk@8
-
-# JAVA 环境变量
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH="$JAVA_HOME/bin:$PATH"
