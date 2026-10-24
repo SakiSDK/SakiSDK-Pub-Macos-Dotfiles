@@ -8,6 +8,7 @@ config-version = 2
 
 # 这里可以添加 AeroSpace 启动后执行的命令
 # 可用命令见：https://nikitabobko.github.io/AeroSpace/commands
+# 集成 borders
 after-startup-command = []
 
 # 登录时自动启动 AeroSpace
@@ -110,7 +111,7 @@ gaps.outer.right =      0
     alt-2 = 'workspace code'
     alt-3 = 'workspace web'
     alt-w = 'workspace chat'
-    alt-5 = 'workspace music'
+    alt-4 = 'workspace music'
     alt-d = 'workspace download'
     alt-esc = 'workspace other'
     alt-backtick = 'workspace video'
@@ -120,7 +121,7 @@ gaps.outer.right =      0
     alt-shift-2 = 'move-node-to-workspace code'
     alt-shift-3 = 'move-node-to-workspace web'
     alt-shift-w = 'move-node-to-workspace chat'
-    alt-shift-5 = 'move-node-to-workspace music'
+    alt-shift-4 = 'move-node-to-workspace music'
     alt-shift-d = 'move-node-to-workspace download'
     alt-shift-esc = 'move-node-to-workspace other'
     alt-shift-backtick = 'move-node-to-workspace video'
@@ -153,7 +154,6 @@ gaps.outer.right =      0
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
-
 
 # 工作区分配到显示器
 [workspace-to-monitor-force-assignment]
@@ -193,3 +193,9 @@ gaps.outer.right =      0
 [[on-window-detected]]
     if.app-id = "com.github.wez.wezterm"
     run = "move-node-to-workspace code"
+
+# web工作区
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = 'deepseek' # 匹配标题包含这些关键词的Chrome窗口
+run = 'move-node-to-workspace web'
